@@ -7,7 +7,7 @@ class ClickSource(private val view: View):Emisor<Unit>() {
     init{
         view.setOnClickListener {
             subscritors.forEach{
-                it.action(Unit)
+                it.onNext(Unit)
             }
         }
     }

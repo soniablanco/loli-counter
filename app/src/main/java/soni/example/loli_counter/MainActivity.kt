@@ -14,12 +14,12 @@ class MainActivity : AppCompatActivity() {
 
         val loli = Loli()
         loli.subscribe(object: Subscriptor<Int>{
-            override fun action(value: Int) {
+            override fun onNext(value: Int) {
                 Log.d("New number",value.toString())
             }
         })
         loli.subscribe(object: Subscriptor<Int>{
-            override fun action(value: Int) {
+            override fun onNext(value: Int) {
                 Log.d("Multiplied by 2 ",(value*2).toString())
             }
         })
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val cat = Cat()
 
         cat.subscribe(object: Subscriptor<String>{
-            override fun action(value:String){
+            override fun onNext(value:String){
                 Log.d("cat says ",value)
             }
         })
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val clickSource = ClickSource(button_clicks)
         clickSource.subscribe(object:Subscriptor<Unit>{
-            override fun action(value: Unit) {
+            override fun onNext(value: Unit) {
                 Log.d("Click source","Click got hit")
             }
         })

@@ -6,7 +6,7 @@ class Loli:Emisor<Int>() {
     fun count(){
         val random = Random.nextInt(3)
         subscritors.forEach{
-            it.action(random)
+            it.onNext(random)
         }
     }
 }
