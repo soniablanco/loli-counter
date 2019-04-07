@@ -2,14 +2,10 @@ package soni.example.loli_counter
 
 import kotlin.random.Random
 
-class Loli() {
-    private val familyMember:MutableList<FamilyMember<Int>> = mutableListOf()
-    fun addFamilyMember(member:FamilyMember<Int>){
-        familyMember.add(member)
-    }
+class Loli:Emisor<Int>() {
     fun count(){
         val random = Random.nextInt(3)
-        familyMember.forEach{
+        familyMembers.forEach{
             it.action(random)
         }
     }

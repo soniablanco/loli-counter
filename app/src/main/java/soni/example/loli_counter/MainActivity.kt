@@ -17,10 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         val cat = Cat()
 
-
         button.setOnClickListener {
             loli.count()
         }
     }
-
 }

@@ -2,16 +2,13 @@ package soni.example.loli_counter
 
 import kotlin.random.Random
 
-class Cat {
-    private val familyMember:MutableList<FamilyMember<String>> = mutableListOf()
+class Cat:Emisor<String>() {
 
     private val meows = listOf("Meow","Purr","Hiss")
-    fun addFamilyMember(member:FamilyMember<String>){
-        familyMember.add(member)
-    }
+
     fun meow(){
         val meow = randomMeow()
-        familyMember.forEach{
+        familyMembers.forEach{
             it.action(meow)
         }
     }
@@ -21,3 +18,5 @@ class Cat {
         return meows[random]
     }
 }
+
+
