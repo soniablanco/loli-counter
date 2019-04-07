@@ -3,9 +3,10 @@ package soni.example.loli_counter
 import kotlin.random.Random
 
 class Cat {
-    private val familyMember:MutableList<FamilyMember> = mutableListOf()
+    private val familyMember:MutableList<FamilyMember<String>> = mutableListOf()
+
     private val meows = listOf("Meow","Purr","Hiss")
-    fun addFamilyMember(member:FamilyMember){
+    fun addFamilyMember(member:FamilyMember<String>){
         familyMember.add(member)
     }
     fun meow(){

@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         loli.addFamilyMember(papa)
         loli.addFamilyMember(mama)
 
+        val cat = Cat()
+
 
         button.setOnClickListener {
             loli.count()
