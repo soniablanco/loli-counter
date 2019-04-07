@@ -9,7 +9,7 @@ class Cat:Emisor<String>() {
     fun meow(){
         val meow = randomMeow()
         subscritors.forEach{
-            it.onNext(meow)
+            it(meow)
         }
     }
 

@@ -13,24 +13,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val loli = Loli()
-        loli.subscribe(object: Subscriptor<Int>{
-            override fun onNext(value: Int) {
-                Log.d("New number",value.toString())
-            }
-        })
-        loli.subscribe(object: Subscriptor<Int>{
-            override fun onNext(value: Int) {
-                Log.d("Multiplied by 2 ",(value*2).toString())
-            }
-        })
+        loli.subscribe{
+            Log.d("New number",it.toString())
+        }
+        loli.subscribe{
+            Log.d("Multiplied by 2 ",(it*2).toString())
+        }
 
         val cat = Cat()
 
-        cat.subscribe(object: Subscriptor<String>{
-            override fun onNext(value:String){
-                Log.d("cat says ",value)
-            }
-        })
+        cat.subscribe{
+            Log.d("cat says ",it)
+        }
 
         button.setOnClickListener {
             loli.count()
@@ -38,10 +32,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val clickSource = ClickSource(button_clicks)
-        clickSource.subscribe(object:Subscriptor<Unit>{
-            override fun onNext(value: Unit) {
-                Log.d("Click source","Click got hit")
-            }
-        })
+        clickSource.subscribe{
+            Log.d("Click source","Click got hit")
+        }
     }
 }
