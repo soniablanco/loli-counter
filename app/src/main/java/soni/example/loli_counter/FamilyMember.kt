@@ -1,5 +1,5 @@
 package soni.example.loli_counter
 
 interface FamilyMember {
-    fun action(number:Int)
+    fun<T> action(value:T)
 }
