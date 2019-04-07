@@ -11,7 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val papa = Dad()
         val mama = Mom()
-        val loli = Loli(mama,papa)
+        val loli = Loli()
+        loli.addFamilyMember(papa)
+        loli.addFamilyMember(mama)
 
 
         button.setOnClickListener {
