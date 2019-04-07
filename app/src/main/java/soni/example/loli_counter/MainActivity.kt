@@ -9,9 +9,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val papa = Dad()
+        val papa = Dad()
         val mama = Mom()
-        val loli = Loli(mama)
+        val loli = Loli(mama,papa)
 
 
         button.setOnClickListener {
