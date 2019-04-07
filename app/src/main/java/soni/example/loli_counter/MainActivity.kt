@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         val papa = Dad()
         val mama = Mom()
         val loli = Loli()
-        loli.addFamilyMember(papa)
-        loli.addFamilyMember(mama)
+        loli.addSubscriptor(papa)
+        loli.addSubscriptor(mama)
 
         val cat = Cat()
 

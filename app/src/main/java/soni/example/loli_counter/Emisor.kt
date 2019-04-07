@@ -1,8 +1,8 @@
 package soni.example.loli_counter
 
 abstract class Emisor<T> {
-    protected val familyMembers:MutableList<FamilyMember<T>> = mutableListOf()
-    fun addFamilyMember(member:FamilyMember<T>){
-        familyMembers.add(member)
+    protected val subscritors:MutableList<Subscriptor<T>> = mutableListOf()
+    fun addSubscriptor(member:Subscriptor<T>){
+        subscritors.add(member)
     }
 }

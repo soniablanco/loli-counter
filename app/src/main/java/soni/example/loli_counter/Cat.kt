@@ -8,7 +8,7 @@ class Cat:Emisor<String>() {
 
     fun meow(){
         val meow = randomMeow()
-        familyMembers.forEach{
+        subscritors.forEach{
             it.action(meow)
         }
     }
