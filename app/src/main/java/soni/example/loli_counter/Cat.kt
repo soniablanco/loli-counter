@@ -2,7 +2,7 @@ package soni.example.loli_counter
 
 import kotlin.random.Random
 
-class Cat:Emisor<String>() {
+class Cat:Observable<String>() {
 
     private val meows = listOf("Meow","Purr","Hiss")
 

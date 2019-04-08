@@ -1,13 +1,13 @@
 package soni.example.loli_counter.clicks
 
 import android.view.View
-import soni.example.loli_counter.Emisor
+import soni.example.loli_counter.Observable
 
-class ClickSource(private val view: View):Emisor<Unit>() {
+class ClickSource(private val view: View): Observable<View>() {
     init{
         view.setOnClickListener {
             subscritors.forEach{
-                it(Unit)
+                it(view)
             }
         }
     }
