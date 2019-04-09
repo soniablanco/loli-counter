@@ -11,15 +11,4 @@ abstract class Observable<T> {
             subs(value)
         }
     }
-
-
-   fun<U> map(transformer:((T)->U)):Observable<U>{
-       val observableResult = object:Observable<U>(){ }
-        this.subscribe {
-            val resultOp:U = transformer(it)
-            observableResult.emit(resultOp)
-
-        }
-        return observableResult
-    }
 }
