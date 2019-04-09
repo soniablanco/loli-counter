@@ -6,9 +6,7 @@ import soni.example.loli_counter.Observable
 class ClickSource(private val view: View): Observable<View>() {
     init{
         view.setOnClickListener {
-            subscritors.forEach{
-                it(view)
-            }
+           emit(it)
         }
     }
 }

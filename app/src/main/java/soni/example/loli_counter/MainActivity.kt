@@ -13,12 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val loli = Loli()
+
         loli.subscribe{
             Log.d("New number",it.toString())
         }
         loli.subscribe{
             Log.d("Multiplied by 2 ",(it*2).toString())
         }
+        loli.map { "desde mapping $it" }.subscribe { Log.d("Mapping",it) }
 
         val cat = Cat()
 

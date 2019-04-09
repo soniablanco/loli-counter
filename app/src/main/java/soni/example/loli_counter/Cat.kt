@@ -8,9 +8,7 @@ class Cat:Observable<String>() {
 
     fun meow(){
         val meow = randomMeow()
-        subscritors.forEach{
-            it(meow)
-        }
+        emit(meow)
     }
 
     private fun randomMeow():String{
