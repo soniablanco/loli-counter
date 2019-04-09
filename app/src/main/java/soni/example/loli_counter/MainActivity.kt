@@ -28,14 +28,41 @@ class MainActivity : AppCompatActivity() {
             Log.d("cat says ",it)
         }
 
+        val red =  NetworkObservable(application as LoliCounterApplication)
+
+        red.subscribe {
+            if(it.isSuccessful){
+                Log.d("Element count", it.body()!!.size.toString())
+            }
+            else{
+                Log.d("Error",it.message())
+            }
+        }
+
         button.setOnClickListener {
             loli.count()
             cat.meow()
+            red.fetchData()
         }
 
         val clickSource = ClickSource(button_clicks)
         clickSource.subscribe{
             Log.d("Click source","Click got hit")
         }
+
+
+
+        /*val call = (application as LoliCounterApplication).networkService.getCoins(50)
+        call.enqueue(object: Callback<List<Coin>>{
+            override fun onResponse(call: Call<List<Coin>>, response: Response<List<Coin>>) {
+                if(response.isSuccessful){
+                    response.body()
+                }
+            }
+            override fun onFailure(call: Call<List<Coin>>, t: Throwable) {
+                ///sonia muestrame eso sirviendo sin nada de observable
+            }
+
+        })*/
     }
 }
