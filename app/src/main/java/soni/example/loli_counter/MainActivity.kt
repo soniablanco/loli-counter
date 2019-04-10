@@ -50,11 +50,17 @@ class MainActivity : AppCompatActivity() {
         return observableResult
     }*/
         user.flapMap{
-            val posts = PostsObservable()
-                posts.fetchData(it.body()!!.id)
-            return@flapMap posts
-        }
-            .subscribe{
+                val posts = PostsObservable()
+                    posts.fetchData(it.body()!!.id)
+                return@flapMap posts
+            }
+            .map {
+                it.body()!![0].title + it.body()!!.size
+            }
+            .subscribe {
+                Log.d("posts", it)
+            }
+            /*.subscribe{
                 if(it.isSuccessful){
                     Log.d("First post", it.body()!![0].title + it.body()!!.size)
                 }
@@ -62,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Error",it.message())
                 }
 
-        }
+            }*/
 
         button.setOnClickListener {
             loli.count()
