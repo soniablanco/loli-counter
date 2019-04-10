@@ -1,17 +1,13 @@
 package soni.example.loli_counter.network
 
-import android.content.Context
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object CoinsServiceClient {
-    private const val BASE_URL = "https://api.coinmarketcap.com/v1/"
+object ServiceClient {
+    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
     var retrofit: Retrofit? = null
 
-    private var networkService: CoinsService? = null
+    private var networkService: Service? = null
 
     private fun buildClient(): Retrofit {
         if (retrofit == null) {
@@ -23,14 +19,14 @@ object CoinsServiceClient {
         return retrofit!!
     }
 
-    fun getClient():CoinsService{
+    fun getClient():Service{
         if(networkService == null)
-            networkService = buildClient().create(CoinsService::class.java)
+            networkService = buildClient().create(Service::class.java)
         return networkService!!
     }
 
     /*fun <U> retrieveData(appContext: Context, endpointUrl: String, methodName: String, classOfU: Class<U>): U {
-        val call = getClient().create(CoinsService::class.java).getCoins(50)
+        val call = getClient().create(Service::class.java).getCoins(50)
         call.enqueue(object: Callback<List<Coin>> {
             override fun onResponse(call: Call<List<Coin>>, response: Response<List<Coin>>) {
                 if(response.isSuccessful){

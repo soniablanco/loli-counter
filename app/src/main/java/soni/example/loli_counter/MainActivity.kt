@@ -28,29 +28,52 @@ class MainActivity : AppCompatActivity() {
             Log.d("cat says ",it)
         }
 
-        val red =  NetworkObservable()
+        val user =  UserObservable()
 
-        red.subscribe {
+        user.subscribe {
             if(it.isSuccessful){
-                Log.d("Element count", it.body()!!.size.toString())
+                Log.d("Element count", it.body()!!.username)
             }
             else{
                 Log.d("Error",it.message())
             }
         }
 
+        /*fun<U> flapMap(banco:(T)->Observable<U>):Observable<U>{
+        val observableResult = object:Observable<U>(){ }
+        this.subscribe { price->
+            val bancoEmisor = banco(price)
+            bancoEmisor.subscribe { bankResult->
+                observableResult.emit(bankResult)
+            }
+        }
+        return observableResult
+    }*/
+        user.flapMap{
+            val posts = PostsObservable()
+                posts.fetchData(it.body()!!.id)
+            return@flapMap posts
+        }
+            .subscribe{
+                if(it.isSuccessful){
+                    Log.d("First post", it.body()!![0].title + it.body()!!.size)
+                }
+                else{
+                    Log.d("Error",it.message())
+                }
+
+        }
+
         button.setOnClickListener {
             loli.count()
             cat.meow()
-            red.fetchData()
+            user.fetchData()
         }
 
         val clickSource = ClickSource(button_clicks)
         clickSource.subscribe{
             Log.d("Click source","Click got hit")
         }
-
-
 
         /*val call = (application as LoliCounterApplication).networkService.getCoins(50)
         call.enqueue(object: Callback<List<Coin>>{
