@@ -12,4 +12,15 @@ abstract class Observable<T> {
         }
     }
 
+    fun<U> flapMap(banco:(T)->Observable<U>):Observable<U>{
+        val observableResult = object:Observable<U>(){ }
+        this.subscribe { price->
+            val bancoEmisor = banco(price)
+            bancoEmisor.subscribe { bankResult->
+                observableResult.emit(bankResult)
+            }
+        }
+        return observableResult
+    }
+
 }
