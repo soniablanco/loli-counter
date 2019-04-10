@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("cat says ",it)
         }
 
-        val red =  NetworkObservable(application as LoliCounterApplication)
+        val red =  NetworkObservable()
 
         red.subscribe {
             if(it.isSuccessful){

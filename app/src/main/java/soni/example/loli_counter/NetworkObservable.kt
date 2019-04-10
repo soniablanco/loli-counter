@@ -4,10 +4,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import soni.example.loli_counter.network.Coin
+import soni.example.loli_counter.network.CoinsServiceClient
 
-class NetworkObservable(val application: LoliCounterApplication):Observable<Response<List<Coin>>>() {
+class NetworkObservable:Observable<Response<List<Coin>>>() {
     fun fetchData(){
-        val call = application.networkService.getCoins(50)
+        val call = CoinsServiceClient.getClient().getCoins(50)
         call.enqueue(object: Callback<List<Coin>> {
             override fun onResponse(call: Call<List<Coin>>, response: Response<List<Coin>>) {
                 emit(response)
