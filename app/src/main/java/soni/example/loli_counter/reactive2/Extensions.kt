@@ -17,8 +17,8 @@ fun<T> Observable2<T>.subscribe(onNext:(T)->Unit){//Extends Observable2<T> by ov
 fun<U,T> Observable2<T>.map(transformer:((T)->U)):Observable2<U>{
     val root = this
     val observableResult = object:Observable2<U>(
-        fun (observer:Observer2<U>){ //Funtion that will be executed every time a new observer subscribes to the Observable
-            root.subscribe{
+        fun (observer:Observer2<U>){ 
+            root.subscribe{// subscribing to the root observable to make it emit and after emiting take the result as input for the next on mapobserver()
                 observer.onNext(transformer(it))
             }
             observer.onComplete()
