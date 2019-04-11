@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val user =  UserObservable()
-
         user.subscribe {
             if(it.isSuccessful){
                 Log.d("Element count", it.body()!!.username)
