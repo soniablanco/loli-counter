@@ -2,7 +2,7 @@ package soni.example.loli_counter.reactive2
 
 import kotlin.random.Random
 
-class Comeloni(private val myfunction:(Observer2<Int>)->Unit = fun (observer:Observer2<Int>){
+class Comeloni(private val myfunction:(Observer2<Int>)->Unit = fun (observer:Observer2<Int>){ //Funtion that will be executed every time a new observer subscribes to the Observable
     val  arrry= listOf(3,3,4,2,32,3)
     for (numero in arrry){
         observer.onNext(numero)

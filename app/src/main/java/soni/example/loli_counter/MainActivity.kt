@@ -7,6 +7,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import soni.example.loli_counter.clicks.ClickSource
 import soni.example.loli_counter.reactive2.Comeloni
 import soni.example.loli_counter.reactive2.Observer2
+import soni.example.loli_counter.reactive2.map
+import soni.example.loli_counter.reactive2.subscribe
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,9 +49,26 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onComplete() {
+//si si sirvio perfecto pisuqi!! comentarea tu coduigo para q quede de referencia y ahora porfa haz lo mismo pero con las librerias ya de rxjava
+                //suscribirme a un observable?
+                // primero gradle a la librerua, lluego quiere q generes un Observble.Interval  y te susbscribas y pruebs
+                // luego quiero que crees un observable con Observable.Create y por ejemplo has el del loli
+                //pero rpimero us la libreriea y juega con lo basisco
 
             }
-        }) //aich no he creado al observer no hay necesida aca se pasa una clase anonima pi
+        })
+
+        comeloni.subscribe {
+            Log.d("From extension",it.toString())
+        }
+
+        comeloni.map {
+            it *3
+        }.subscribe{
+            Log.d("Mapping",it.toString())
+        }
+
+        //aich no he creado al observer no hay necesida aca se pasa una clase anonima pi
 
         /*fun<U> flapMap(banco:(T)->Observable<U>):Observable<U>{
         val observableResult = object:Observable<U>(){ }
