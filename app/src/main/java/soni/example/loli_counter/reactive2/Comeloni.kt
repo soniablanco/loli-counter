@@ -2,20 +2,20 @@ package soni.example.loli_counter.reactive2
 
 import kotlin.random.Random
 
-class Comeloni()/*:Observable2<Int>(
-
-    (ff: Observer2<Int>) ->{
-    Random.nextInt(3)
-    ///jejej tengo q revisar kotlin pero basicament aca estamos llamando el constructor base que espera: (Observer2<T>)->Unit
-    // entonces aca definikmos la function; y como tenemos referencia al observer hacemos observe.onNex(y lo q salga del random)
-
-    // si me entiendes?//si
-    //sube al repo como esta ahorita y yo tambien practico la lambda para pasarla al ctor y luego comparamos
-    //ok
+class Comeloni(private val myfunction:(Observer2<Int>)->Unit = fun (observer:Observer2<Int>){
+    val  arrry= listOf(3,3,4,2,32,3)
+    for (numero in arrry){
+        observer.onNext(numero)
     }
+    //lo importante aca es q cada vez q se suscriben se ejecuta la funcion osea recibe una nueva rafaga de valores osea no es compartida es unicast
+
+    //muy bien pisquiio sube este codigo y ya te llamo y te digo q hacer
+    observer.onComplete()
+}):Observable2<Int>(myfunction){
 
 
-){
-
-    //no tiene nada publico loli
-}*/
+///excellente pisqui
+    /*fun myfunction(observer:Observer2<Int>){
+        observer.onNext(Random.nextInt())
+    }*/
+}

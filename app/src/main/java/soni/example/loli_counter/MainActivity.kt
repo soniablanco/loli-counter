@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import soni.example.loli_counter.clicks.ClickSource
+import soni.example.loli_counter.reactive2.Comeloni
+import soni.example.loli_counter.reactive2.Observer2
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +39,17 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Error",it.message())
             }
         }
+
+        val comeloni = Comeloni()// Si si funciona pruebalo ssubscribete
+        comeloni.subscribe(object:Observer2<Int>{
+            override fun onNext(value: Int) {
+                Log.d("NewObserver",value.toString())
+            }
+
+            override fun onComplete() {
+
+            }
+        }) //aich no he creado al observer no hay necesida aca se pasa una clase anonima pi
 
         /*fun<U> flapMap(banco:(T)->Observable<U>):Observable<U>{
         val observableResult = object:Observable<U>(){ }
